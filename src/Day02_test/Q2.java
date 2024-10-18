@@ -19,7 +19,7 @@ public class Q2 {
                 System.out.println("계절은 여름입니다. 온도는" + temp + "도 입니다.");
             } else if (month >= 9 && month <= 11 && temp >= 3 && temp <= 15) {
                 System.out.println("계절은 가을입니다. 온도는" + temp + "도 입니다.");
-            } else if (month == 12 && month == 1 && month == 2 && temp >= -15 && temp <= 2) {
+            } else if ((month == 12 || month == 1 || month == 2) && temp >= -15 && temp <= 2) {
                 System.out.println("계절은 겨울입니다. 온도는" + temp + "도 입니다.");
             } else {
                 System.out.println("계절과 온도가 맞지 않습니다.");
