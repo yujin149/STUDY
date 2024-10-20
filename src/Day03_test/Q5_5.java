@@ -15,6 +15,19 @@ public class Q5_5 {
             }
             System.out.println();
         }
+        for (int i = 0; i < 2; i++) {
+            for (int j = 2; j > 0; j--) {
+                if (j > i) {
+                    System.out.print(" ");
+                } else {
+                    for (int str = 0; str < (i * 2) + 1; str++) {
+                        System.out.print("*");
+                    }
+                    break;
+                }
+            }
+            System.out.println();
+        }
 
     }
 }
