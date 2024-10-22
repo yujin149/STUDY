@@ -37,6 +37,14 @@ public class Q7_test {
             int col = sc.nextInt();
             System.out.print("Y : ");
             int row = sc.nextInt();
+            if (col < 0 || col > 5 || row < 0 || row > 5) {
+                System.out.println("잘못된 입력입니다. 다시 캐스팅 해주세요.");
+            } else if (lake[col - 1][row - 1] == 1) {
+                System.out.print(" X");
+                break;
+            } else {
+                System.out.println("물고기가 없습니다. 다시 캐스팅 해주세요.");
+            }
 
 
         }
