@@ -14,5 +14,47 @@ package Day06_test;
 1 2 3 2 1
  */
 
+import java.util.Scanner;
+
 public class arrayPractice07 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("5 이상의 홀수를 입력하세요.");
+            System.out.print("정수 입력 : ");
+            int num = sc.nextInt();
+
+            if (num % 2 == 0 || num < 5) {
+                System.out.println("다시 입력하세요.");
+            } else {
+               /* //int[] arr = new int[num];
+
+                for (int i = 1; i <= num / 2 + 1; i++) {
+                    System.out.print(i + " ");
+                }
+                for (int i = num / 2; i > 0; i--) {
+                    System.out.print(i + " ");
+                }
+                */
+                int[] arr = new int[num];
+                for (int i = 0; i < num / 2; i++) {
+                    for (int j = 1; j <= num / 2 + 1; j++) {
+                        arr[i] = j;
+                    }
+                }
+                for (int i = num / 2 + 1; i < num - 1; i--) {
+                    for (int j = 1; j <= num / 2 + 1; j++) {
+                        arr[i] = j;
+                    }
+                }
+                for (int i = 0; i < num; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+                break;
+            }
+
+        }
+    }
+
 }
