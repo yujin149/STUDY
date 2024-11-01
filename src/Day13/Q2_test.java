@@ -114,7 +114,7 @@ class Control {
 
 }
 
-public class Q2 {
+public class Q2_test {
     public static void main(String[] args) {
         Control control = new Control();
         control.print();
