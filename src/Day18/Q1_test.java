@@ -33,7 +33,7 @@ class Customer extends Thread {
     }
 }
 
-public class Q1 {
+public class Q1_test {
     public static void main(String[] args) throws InterruptedException {
         Account a = new Account();
         Customer[] customers = new Customer[5];

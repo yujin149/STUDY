@@ -11,10 +11,10 @@ import java.util.Random;
 class Maze extends JFrame implements ActionListener {
 
     Random r = new Random();
-    int x1 = r.nextInt(5) * 80; //랜덤 0~4*80
-    int y1 = r.nextInt(5) * 80; //랜덤 0~4*80
-    int x2 = 320; //정수 변수 선언 후 320으로 초기화
-    int y2 = 0; //정수 변수 선언 후 0으로 초기화
+    int x1 = r.nextInt(5) * 80; //랜덤 0~4*80  //5X5라서 5 / 상자의 가로세로길이가 80 //빨간색
+    int y1 = r.nextInt(5) * 80; //랜덤 0~4*80 //5X5라서 5 / 상자의 가로세로길이가 80 //빨간색
+    int x2 = 320; //정수 변수 선언 후 320으로 초기화 //초록색 시작위치
+    int y2 = 0; //정수 변수 선언 후 0으로 초기화 //초록색 시작위치
     JPanel p1; // JPanel 변수 선언
     JTextField jf; // JTextField 변수 선언
 
@@ -22,14 +22,14 @@ class Maze extends JFrame implements ActionListener {
     {
         Container c = getContentPane();
         //Container 객체를 생성 getContentPane() <JFrame에 있음> 메소드를 이용
-        c.setLayout(new BorderLayout());
+        c.setLayout(new BorderLayout()); //중앙에 놓으려고
         //Container 이용해서 Layout 설정
         //BorderLayout으로 Layout 설정
-        p1 = new Mframe();
+        p1 = new Mframe(); //업캐스팅 //JFrame 안에 Mfream
         //Mframe 객체를 생성
         //JPanel 변수 p1에 대입
         //객체 형변환
-        p1.setLayout(new FlowLayout());
+        p1.setLayout(new FlowLayout()); //Mframe은 FlowLayout
         //JPanel의 Layout을 FlowLayout으로 설정
         JPanel p2 = new JPanel();
         //JPanel의 객체를 생성해서 변수p2에 대입
@@ -73,7 +73,7 @@ class Maze extends JFrame implements ActionListener {
     //이벤트 리스너 함수
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("up")) {
-            x2 -= 80;
+            x2 -= 80; //사각형이 80X80이라서
             //x2에서 80을 뺀 값을 다시 x2에 대입
 
             if (x2 < 0)
@@ -111,7 +111,7 @@ class Maze extends JFrame implements ActionListener {
 
         }
         System.out.println(x1 + ", " + y1 + " : " + x2 + ", " + y2);
-        p1.repaint();
+        p1.repaint(); //repaint(); 그림 그린것을 다시 그린다는 뜻
         //위에 명령이 끝나면 p1인 JPanel을 다시 그린다
         //repaint > paintComponent(Graphics g) 간다
 
@@ -128,13 +128,13 @@ class Maze extends JFrame implements ActionListener {
             //p1 > JPanel을 꾸며주는 logic
             for (int i = 0; i <= 320; i = i + 80) {
                 for (int j = 0; j <= 320; j = j + 80) {
-                    g.drawRect(i, j, 80, 80);
+                    g.drawRect(i, j, 80, 80); //drawRect 비어있는 사각형 //drawCircle 원형
                     //g(Graphics)이용해서 drawRectangle (0,0,80,80) (0,0)에 위치한 80x80크기의 정사각형을 그림
                 }
             }
             //5x5 정사각형을 그리기위해 반복문 사용
             g.setColor(Color.GREEN);
-            g.fillRect(y2, x2, 80, 80);
+            g.fillRect(y2, x2, 80, 80); //fillRect 사각형을 꽉채운다는 뜻 
             g.setColor(Color.RED);
             g.fillRect(y1, x1, 80, 80);
             if (x1 == x2 && y1 == y2) {
@@ -152,7 +152,7 @@ class Maze extends JFrame implements ActionListener {
 }
 
 
-public class Q1 {
+public class Q2 {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 

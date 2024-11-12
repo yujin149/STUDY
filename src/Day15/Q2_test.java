@@ -65,7 +65,7 @@ class AirPuri extends Mart {
     }
 }
 
-public class Q2 {
+public class Q2_test {
     public static void main(String[] args) {
         Random r = new Random();
         Mart[] product = new Mart[40];

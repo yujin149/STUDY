@@ -2,7 +2,7 @@ package Day05_test;
 
 import java.util.Scanner;
 
-public class Q5_1 {
+public class Q1_1 {
     static void input(Scanner sc, int[] num) {
         for (int i = 0; i < 2; i++) {
             System.out.print((i + 1) + "번째 숫자 입력 : ");

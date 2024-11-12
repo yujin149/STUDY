@@ -34,7 +34,7 @@ class Lcm {
     }
 }
 
-public class Q5_2 {
+public class Q1_2 {
     public static void main(String[] args) {
         Input input = new Input();
         Gcd gcd = new Gcd(input);
