@@ -63,5 +63,59 @@ public class Q1_2 {
             System.out.println();
         }
 
+        //이동
+        while (fishcount > 0) {
+            System.out.print("1.위 2.아래 3.왼쪽 4.오른쪽 : ");
+            int num = sc.nextInt();
+
+            if (num == 1) {
+                x--;
+                if (x < 0) {
+                    System.out.println("더이상 위로 움직일 수 없습니다.");
+                    x = 0;
+                }
+            } else if (num == 2) {
+                x++;
+                if (x > 4) {
+                    System.out.println("더이상 아래로 움직일 수 없습니다.");
+                    x = 4;
+                }
+            } else if (num == 3) {
+                y--;
+                if (y < 0) {
+                    System.out.println("더이상 왼쪽으로 움직일 수 없습니다.");
+                    y = 0;
+                }
+            } else if (num == 4) {
+                y++;
+                if (y > 4) {
+                    System.out.println("더이상 오른쪽으로 움직일 수 없습니다.");
+                    y = 4;
+                }
+            } else {
+                System.out.println("잘못된 입력입니다.");
+            }
+
+            if (hosu[x][y] == 1) {
+                System.out.println("물고기를 잡았습니다.");
+                hosu[x][y] = 0;
+                fishcount--;
+            }
+            //출력
+            for (int i = 0; i < hosu.length; i++) {
+                for (int j = 0; j < hosu[i].length; j++) {
+                    if (i == x && j == y) {
+                        System.out.print("❤️ \t");
+                    } else if (hosu[i][j] == 1) {
+                        System.out.print("🦐 \t");
+                    } else {
+                        System.out.print("💧 \t");
+                    }
+                }
+                System.out.println();
+            }
+        }
+        System.out.println("물고기를 모두 잡았습니다.");
+
     }
 }

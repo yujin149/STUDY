@@ -11,5 +11,4 @@ public class GsonToJson {
         Member member = gson.fromJson(json,Member.class); //Json -> Member 객체
         System.out.println(member);
     }
-
 }

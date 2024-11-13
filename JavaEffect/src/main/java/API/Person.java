@@ -6,7 +6,11 @@ public class Person {
     private String email;
     private Address address;
 
-    public Person(String name, int age, String mail, Address address) {
+    public Person(String name, int age, String email, Address address) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.address = address;
     }
 
     public String getName() {
