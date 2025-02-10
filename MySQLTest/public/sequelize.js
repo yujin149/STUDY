@@ -2,7 +2,7 @@
 document.querySelectorAll('#user-list tr').forEach((el) => {
   el.addEventListener('click', function () {
     const id = el.querySelector('td').textContent;
-    getComment(id);
+    getComment(id); //이 아이디를 댓글 로딩 getComment으로 보냄.
   });
 });
 // 사용자 로딩
@@ -14,9 +14,9 @@ async function getUser() {
     const tbody = document.querySelector('#user-list tbody');
     tbody.innerHTML = '';
     users.map(function (user) {
-      const row = document.createElement('tr');
-      row.addEventListener('click', () => {
-        getComment(user.id);
+      const row = document.createElement('tr'); //tr 객체 생성
+      row.addEventListener('click', () => { //tr 리스너 붙이고
+        getComment(user.id); // 댓글 가져오기기
       });
       // 로우 셀 추가
       let td = document.createElement('td');
@@ -29,7 +29,7 @@ async function getUser() {
       td.textContent = user.age;
       row.appendChild(td);
       td = document.createElement('td');
-      td.textContent = user.married ? '기혼' : '미혼';
+      td.textContent = user.married ? '기혼' : '미혼'; 
       row.appendChild(td);
       tbody.appendChild(row);
     });
@@ -38,7 +38,7 @@ async function getUser() {
   }
 }
 // 댓글 로딩
-async function getComment(id) {
+async function getComment(id) { //위에서  getComment(id); 부르고, getUser()에서도 부름.
   try {
     const res = await axios.get(`/users/${id}/comments`);
     const comments = res.data;
@@ -46,7 +46,7 @@ async function getComment(id) {
     tbody.innerHTML = '';
     comments.map(function (comment) {
       // 로우 셀 추가
-      const row = document.createElement('tr');
+      const row = document.createElement('tr'); 
       let td = document.createElement('td');
       td.textContent = comment.id;
       row.appendChild(td);

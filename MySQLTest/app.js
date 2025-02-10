@@ -24,7 +24,7 @@ sequelize.sync({ force: false }) //true이면 서버를 실행할 때마다 테�
   });
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); //여기서 폴더 경로를 지정해놔서 /public을 안넣어도 된다.
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
