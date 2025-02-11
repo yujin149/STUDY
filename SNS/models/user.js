@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-class User extends Sequelize.Model {
-  static initiate(sequelize) {
-    User.init({
+module.exports = class User extends Sequelize.Model{
+  static init(sequelize) {
+    return super.init({
       email: {
         type: Sequelize.STRING(40),
         allowNull: true,
@@ -17,7 +17,7 @@ class User extends Sequelize.Model {
         allowNull: true,
       },
       provider: {
-        type: Sequelize.ENUM('local', 'kakao'),
+        type: Sequelize.STRING(10),
         allowNull: false,
         defaultValue: 'local',
       },
@@ -36,20 +36,21 @@ class User extends Sequelize.Model {
       collate: 'utf8_general_ci',
     });
   }
-
   static associate(db) {
+    
     db.User.hasMany(db.Post);
-    db.User.belongsToMany(db.User, {
+    db.User.belongsToMany(db.User, { //팔로잉
       foreignKey: 'followingId',
       as: 'Followers',
       through: 'Follow',
     });
-    db.User.belongsToMany(db.User, {
+    db.User.belongsToMany(db.User, { //팔로우
       foreignKey: 'followerId',
       as: 'Followings',
       through: 'Follow',
     });
+    
   }
 };
 
-module.exports = User;
+//module.exports = User;

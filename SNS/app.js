@@ -5,12 +5,18 @@ const path = require('path');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
+const passport = require('passport');
 
 dotenv.config(); 
 const pageRouter = require('./routes/page'); 
+const authRouter = require('./routes/auth');
+const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
+const { sequelize } = require('./models');
+const passportConfig = require('./passport');
 
 const app = express();
-//passportConfig(); //패스포트설정
+passportConfig(); //패스포트설정
 app.set('port', process.env.PORT || 8001);
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -18,8 +24,17 @@ nunjucks.configure('views', {
   watch: true,
 });
 
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log('데이터베이스 연결 성공');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 app.use(morgan('dev')); //출력 나오게 세팅
 app.use(express.static(path.join(__dirname, 'public'))); //static -> public
+app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -33,7 +48,13 @@ app.use(session({
   },
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', pageRouter); // / ->  pageRouter() -> ./routes/page.js
+app.use('/auth', authRouter);
+app.use('/post', postRouter);
+app.use('/user', userRouter);
 
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
