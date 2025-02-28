@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components/native';
 
 const StyledTextInput = styled.TextInput.attrs({
@@ -20,9 +20,20 @@ const Form = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  const refName = useRef(null);
+  const refEmail = useRef(null);
+
+
+  useEffect(() => {
+    console.log(`\n==== Form Component Mount =====\n`);
+    refName.current.focus();
+    return () => console.log('\n==== Form Component Unmount =====\n')
+}, []);
+
+
   useEffect(() => {
       console.log(`name: ${name}, email: ${email} \n`);
-  });
+  }, [email]);
 
   return(
     <>
@@ -32,11 +43,18 @@ const Form = () => {
         value ={name}
         onChangeText={text => setName(text)}
         placeholder="name"
+        
+        ref={refName}
+        returnKeyType="next" //종료할 키 type
+        onSubmitEditing={() => refEmail.current.focus()} //전송이 되면 refmail으로 포커스된다.
       />
       <StyledTextInput
         value ={email}
         onChangeText={text => setEmail(text)}
         placeholder="email"
+
+        ref={refEmail}
+        returnKeyType="done" 
       />
     </>
   );
