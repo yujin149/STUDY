@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'people.dart';
+import 'secondPage.dart';
+import 'intro.dart';
+import 'sliverPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: AnimationApp(),
+      //home: AnimationApp(),
+      home: IntroPage(),
     );
   }
 }
@@ -122,6 +126,53 @@ class _AnimationApp extends State<AnimationApp> {
                   });
                 },
                 child: Text('사라지기'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => SecondPage(),
+                    ),
+                  );
+                },
+                child: SizedBox(
+                  width:200,
+                  child: Row(
+                    children: <Widget>[
+                      Hero(tag: 'detail', child: Icon(Icons.cake)),
+                      Text('이동하기')
+                    ],
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => IntroPage(),
+                    ),
+                  );
+                },
+                child: SizedBox(
+                  width:200,
+                  child: Row(
+                    children: <Widget>[
+                      Hero(tag: 'detail', child: Icon(Icons.star)),
+                      Text('인트로 페이지')
+                    ],
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Sliverpage(),
+                    ),
+                  );
+                },
+                child:
+                      Text('페이지 이동'),
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
