@@ -21,6 +21,58 @@ Future<void> dbConnector() async {
 
   print('Connected');
 
+  //1.추가
+/*
+  var res = await conn.execute(
+    "INSERT INTO testtbl VALUES (:a, :b)",
+    {
+      "a":4,
+      "b":"호랑이",
+    }
+  );
+*/
+
+
+  //2.수정
+  /*
+  var res = await conn.execute(
+    "UPDATE testtbl SET name = :a where name = '호랑이'",
+    {
+      "a" : "사슴",
+    }
+  );
+
+   */
+  /*
+  var res = await conn.execute(
+      "UPDATE testtbl SET name = :a where name = ':b'",
+      {
+        "a" : "사슴",
+        "b" : "호랑이",
+      }
+  );
+*/
+  //3.삭제
+  //await conn.execute("delete from testtbl where name = :a",{"a":"고양이"});
+  
+  //4.탐색-1 (전체)
+  /*
+  var res = await conn.execute("select * from testtbl");
+  for(final row in res.rows){
+    print(row.colAt(0)); //행의 인덱스 정보 출력
+    print(row.colByName("name"));
+    print(row.assoc());
+  }
+
+   */
+  //5.탐색-2 (조건문)
+  var res = await conn.execute(
+    "select * from testtbl where id = :a",
+    {
+      "a" : 4,
+    }
+  );
+
   //종료 대기
   await conn.close();
 }
