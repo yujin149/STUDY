@@ -1,0 +1,9 @@
+✔ 카카오(다음)주소 API 적용하는 방법
+
+https://postcode.map.daum.net/guide
+
+key 발급도 필요 없이 코드만 넣어주면 되기 때문에 엄청나게 간단하다. 
+카카오에서 제공하는 예제 소스는 총 5가지가 있는데 본인이 편한 방법으로 사용하면된다. 
+위에 있는 사이트를 들어가서 본인이 원하는 소스를 넣어주면 되는데 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+를 꼭 넣어줘야지 사용할 수 있다.
